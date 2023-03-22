@@ -6,26 +6,26 @@ import { ScreenName, ScreenPath } from "@/constants";
 import { Text } from "@chakra-ui/react";
 
 const headerMenuList = [
-  { name: "Document", link: `${ScreenPath.WritePage}?section=document` },
-  { name: "Test", link: `${ScreenPath.WritePage}?section=test` },
-  { name: "Email", link: `${ScreenPath.WritePage}?section=email` },
+  { name: "Document", link: `${ScreenPath.ApprovedPage}?section=document` },
+  { name: "Test", link: `${ScreenPath.ApprovedPage}?section=test` },
+  { name: "Email", link: `${ScreenPath.ApprovedPage}?section=email` },
 ];
 
-const Write = () => {
+const Approved = () => {
   return (
     <>
       <Head>
-        <title>{ScreenName.WritePage}</title>
+        <title>{ScreenName.ApprovedPage}</title>
       </Head>
       <Page>
         <HeaderNavigatorBar menuList={headerMenuList} />
         <Text mt="4" textAlign="center">
           Coming soon ...
         </Text>
-        <BottomNavigatorBar currentPage={ScreenName.WritePage} />
+        <BottomNavigatorBar currentPage={ScreenName.ApprovedPage} />
       </Page>
     </>
   );
 };
 
-export default Write;
+export default Approved;

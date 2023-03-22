@@ -1,31 +1,30 @@
 import BottomNavigatorBar from "@/common/components/BottomNavigatorBar";
 import HeaderNavigatorBar from "@/common/components/HeaderNavigatorBar";
 import Page from "@/common/components/Page";
-import Head from "next/head";
-import { ScreenName, ScreenPath } from "@/constants";
 import { Text } from "@chakra-ui/react";
+import Head from "next/head";
+import { ScreenName, ScreenPath } from "../../constants";
 
 const headerMenuList = [
-  { name: "Document", link: `${ScreenPath.WritePage}?section=document` },
-  { name: "Test", link: `${ScreenPath.WritePage}?section=test` },
-  { name: "Email", link: `${ScreenPath.WritePage}?section=email` },
+  { name: "Report A", link: `${ScreenPath.ReportPage}?section=report-a` },
+  { name: "Report B", link: `${ScreenPath.ReportPage}?section=report-b` },
 ];
 
-const Write = () => {
+const Report = () => {
   return (
     <>
       <Head>
-        <title>{ScreenName.WritePage}</title>
+        <title>{ScreenName.ReportPage}</title>
       </Head>
       <Page>
         <HeaderNavigatorBar menuList={headerMenuList} />
         <Text mt="4" textAlign="center">
           Coming soon ...
         </Text>
-        <BottomNavigatorBar currentPage={ScreenName.WritePage} />
+        <BottomNavigatorBar currentPage={ScreenName.ReportPage} />
       </Page>
     </>
   );
 };
 
-export default Write;
+export default Report;
