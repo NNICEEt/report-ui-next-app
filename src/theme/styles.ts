@@ -9,6 +9,7 @@ const styles = {
     body: {
       bg: "white",
       minHeight: "100vh",
+      fontSize: "16px",
     },
   },
 } as GlobalStyleProps;
