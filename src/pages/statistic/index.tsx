@@ -1,8 +1,13 @@
+import Head from "next/head";
+
 import BottomNavigatorBar from "@/common/components/BottomNavigatorBar";
 import HeaderNavigatorBar from "@/common/components/HeaderNavigatorBar";
 import Page from "@/common/components/Page";
-import Head from "next/head";
-import { ScreenName, ScreenPath } from "../../constants";
+import StatisticTabs from "@/components/statistic/StatisticTabs";
+
+import { ScreenName, ScreenPath } from "@/constants";
+import DateFilterSection from "@/components/statistic/DateFilterSection";
+import StatisticSection from "@/components/statistic/StatisticSection";
 
 const headerMenuList = [
   {
@@ -20,7 +25,9 @@ const Statistic = () => {
       </Head>
       <Page>
         <HeaderNavigatorBar menuList={headerMenuList} />
-
+        <StatisticTabs />
+        <DateFilterSection />
+        <StatisticSection />
         <BottomNavigatorBar currentPage={ScreenName.StatisticPage} />
       </Page>
     </>

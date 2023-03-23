@@ -1,13 +1,13 @@
-import { Roboto } from "next/font/google";
+import { Kanit } from "next/font/google";
 
-const robotoFont = Roboto({
+const kanitFont = Kanit({
   weight: ["400"],
   subsets: ["latin"],
 });
 
 const fonts = {
-  heading: robotoFont.style.fontFamily,
-  body: robotoFont.style.fontFamily,
+  heading: kanitFont.style.fontFamily,
+  body: kanitFont.style.fontFamily,
 };
 
 export default fonts;

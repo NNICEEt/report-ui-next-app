@@ -1,9 +1,11 @@
+import Head from "next/head";
+
 import BottomNavigatorBar from "@/common/components/BottomNavigatorBar";
 import HeaderNavigatorBar from "@/common/components/HeaderNavigatorBar";
 import Page from "@/common/components/Page";
 import { Text } from "@chakra-ui/react";
-import Head from "next/head";
-import { ScreenName, ScreenPath } from "../../constants";
+
+import { ScreenName, ScreenPath } from "@/constants";
 
 const headerMenuList = [
   { name: "Report A", link: `${ScreenPath.ReportPage}?section=report-a` },

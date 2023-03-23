@@ -50,14 +50,14 @@ const HeaderNavigatorBar = ({ menuList = [] }: HeaderNavigatorBarProps) => {
           {menuList.length > 1 && (
             <MenuList>
               {menuList.map((item, index) => (
-                <MenuItem key={index}>
+                <MenuItem key={index} fontWeight="semibold">
                   <Link href={item.link}>{item.name}</Link>
                 </MenuItem>
               ))}
             </MenuList>
           )}
         </Menu>
-        <IconButton aria-label="home-button" icon={<IoIosOptions />} />
+        <IconButton aria-label="options-button" icon={<IoIosOptions />} />
       </Flex>
     </>
   );
