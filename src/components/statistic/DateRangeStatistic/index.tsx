@@ -47,7 +47,7 @@ const DateRangeStatistic = () => {
       <Tabs
         variant="unstyled"
         display="flex"
-        gap="1"
+        gap={{ base: "1", sm: "3", md: "5" }}
         onChange={handleTabsChange}
       >
         {items.map((item, index) => (

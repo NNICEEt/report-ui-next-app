@@ -5,6 +5,7 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  Portal,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -47,15 +48,17 @@ const HeaderNavigatorBar = ({ menuList = [] }: HeaderNavigatorBarProps) => {
               {title} {menuList.length > 1 && <AiOutlineDown />}
             </Flex>
           </MenuButton>
-          {menuList.length > 1 && (
-            <MenuList>
-              {menuList.map((item, index) => (
-                <MenuItem key={index} fontWeight="semibold">
-                  <Link href={item.link}>{item.name}</Link>
-                </MenuItem>
-              ))}
-            </MenuList>
-          )}
+          <Portal>
+            {menuList.length > 1 && (
+              <MenuList>
+                {menuList.map((item, index) => (
+                  <MenuItem key={index} fontWeight="semibold">
+                    <Link href={item.link}>{item.name}</Link>
+                  </MenuItem>
+                ))}
+              </MenuList>
+            )}
+          </Portal>
         </Menu>
         <IconButton aria-label="options-button" icon={<IoIosOptions />} />
       </Flex>

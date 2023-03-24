@@ -36,7 +36,7 @@ const DateFilterSection = () => {
     >
       <Flex justifyContent="space-between">
         <Tabs
-          flex="0.7"
+          flex={{ base: "0.7", sm: "0.8", md: "0.9" }}
           mx="3"
           index={statisticDateType}
           onChange={(index) => {
