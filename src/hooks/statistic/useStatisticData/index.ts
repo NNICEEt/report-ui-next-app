@@ -1,5 +1,5 @@
 import useStatisticStore from "@/stores/statisticStore";
-import { StatisticDateType, StatisticType } from "@/types";
+import { StatisticDateType } from "@/types";
 
 const mockStatisticData = {
   daily: [[34], [56], [450], [40]],

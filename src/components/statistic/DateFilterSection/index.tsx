@@ -14,8 +14,11 @@ const DateFilterSection = () => {
     (state) => state.statisticDateType
   );
 
-  const setStatisticDateType = useStatisticStore(
-    (state) => state.setStatisticDateType
+  const { setStatisticDateType, setStatisticDisplayType } = useStatisticStore(
+    (state) => ({
+      setStatisticDateType: state.setStatisticDateType,
+      setStatisticDisplayType: state.setStatisticDisplayType,
+    })
   );
 
   const dateFilterTabs = [locales.DAILY, locales.WEEKLY, locales.MONTHLY];
@@ -24,7 +27,6 @@ const DateFilterSection = () => {
     { icon: <GrUnorderedList /> },
   ];
 
-  console.log(statisticDateType);
   return (
     <Box
       p="2"
@@ -37,8 +39,8 @@ const DateFilterSection = () => {
           flex="0.7"
           mx="3"
           index={statisticDateType}
-          onChange={(e) => {
-            setStatisticDateType(e);
+          onChange={(index) => {
+            setStatisticDateType(index);
           }}
         >
           {dateFilterTabs.map((tab, index) => (
@@ -46,7 +48,7 @@ const DateFilterSection = () => {
           ))}
         </Tabs>
         <Flex color="primary.500">
-          <Tabs px="2">
+          <Tabs px="2" onChange={(index) => setStatisticDisplayType(index)}>
             {displayTabs.map((tab, index) => (
               <LineTab
                 key={index}

@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs } from "@chakra-ui/react";
+import { Box, Tab, Tabs, Text } from "@chakra-ui/react";
 
 import { AiOutlineGift, AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
@@ -8,10 +8,15 @@ import * as appLocales from "@/locales";
 import LineChart from "@/common/components/LineChart";
 import useStatisticData from "@/hooks/statistic/useStatisticData";
 import useStatisticStore from "@/stores/statisticStore";
+import StatisticRecord from "../StatisticRecord";
+import { StatisticDisplayType } from "@/types";
 
 const DateRangeStatistic = () => {
   const { data, labels } = useStatisticData();
 
+  const statisticDisplayType = useStatisticStore(
+    (state) => state.statisticDisplayType
+  );
   const setStatisticType = useStatisticStore((state) => state.setStatisticType);
 
   const handleTabsChange = (index: number) => {
@@ -64,9 +69,14 @@ const DateRangeStatistic = () => {
           </Tab>
         ))}
       </Tabs>
-      <Box mt="8" mx="auto" maxW="720px">
-        <LineChart labels={labels} data={data} />
-      </Box>
+      {statisticDisplayType === StatisticDisplayType.Chart && (
+        <Box mt="8" mx="auto" maxW="720px">
+          <LineChart labels={labels} data={data} />
+        </Box>
+      )}
+      {statisticDisplayType === StatisticDisplayType.Record && (
+        <StatisticRecord />
+      )}
     </Box>
   );
 };

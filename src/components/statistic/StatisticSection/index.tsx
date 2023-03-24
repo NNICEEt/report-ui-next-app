@@ -12,8 +12,8 @@ const StatisticSection = () => {
   );
 
   return (
-    <Box p="6">
-      <Flex justifyContent="space-between">
+    <Box px="3" pt="5">
+      <Flex px="2" justifyContent="space-between">
         <Text>10-16 December 2019</Text>
         <IconButton
           variant="link"
