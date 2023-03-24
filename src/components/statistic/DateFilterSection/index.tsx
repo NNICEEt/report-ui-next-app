@@ -3,14 +3,28 @@ import { ImStatsBars } from "react-icons/im";
 import { GrUnorderedList } from "react-icons/gr";
 import { BsArrowDown } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
-import Tabs from "@/common/components/Tabs";
+import Tabs, { LineTab } from "@/common/components/Tabs";
 
 import * as locales from "./locales";
+import useStatisticStore from "@/stores/statisticStore";
+import { StatisticDateType } from "@/types";
 
 const DateFilterSection = () => {
-  const dateFilterTabs = [locales.DAILY, locales.WEEKLY, locales.MONTHLY];
-  const displayTabs = [<ImStatsBars key="1" />, <GrUnorderedList key="2" />];
+  const statisticDateType = useStatisticStore(
+    (state) => state.statisticDateType
+  );
 
+  const setStatisticDateType = useStatisticStore(
+    (state) => state.setStatisticDateType
+  );
+
+  const dateFilterTabs = [locales.DAILY, locales.WEEKLY, locales.MONTHLY];
+  const displayTabs = [
+    { icon: <ImStatsBars /> },
+    { icon: <GrUnorderedList /> },
+  ];
+
+  console.log(statisticDateType);
   return (
     <Box
       p="2"
@@ -22,16 +36,30 @@ const DateFilterSection = () => {
         <Tabs
           flex="0.7"
           mx="3"
-          tabItems={dateFilterTabs}
-          tabProps={{ _selected: { color: "black" } }}
-          hasUnderline
-        />
+          index={statisticDateType}
+          onChange={(e) => {
+            setStatisticDateType(e);
+          }}
+        >
+          {dateFilterTabs.map((tab, index) => (
+            <LineTab key={index}>{tab}</LineTab>
+          ))}
+        </Tabs>
         <Flex color="primary.500">
-          <Tabs
-            px="2"
-            tabItems={displayTabs}
-            tabProps={{ fontSize: "18px", px: "3" }}
-          />
+          <Tabs px="2">
+            {displayTabs.map((tab, index) => (
+              <LineTab
+                key={index}
+                px="3"
+                fontSize="18px"
+                isDisabled={
+                  index === 1 && statisticDateType === StatisticDateType.Daily
+                }
+              >
+                {tab.icon}
+              </LineTab>
+            ))}
+          </Tabs>
         </Flex>
       </Flex>
       <Flex my="1.5" alignItems="end">

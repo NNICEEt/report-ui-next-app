@@ -1,15 +1,16 @@
-import Tabs from "@/common/components/Tabs";
+import Tabs, { LineTab } from "@/common/components/Tabs";
 
 import * as locales from "./locales";
 
 const StatisticTabs = () => {
+  const tabs = [locales.SUBMISSION, locales.ENGAGEMENT];
+
   return (
-    <Tabs
-      h="48px"
-      tabItems={[locales.SUBMISSION, locales.ENGAGEMENT]}
-      hasUnderline
-      hasDivider
-    />
+    <Tabs h="48px">
+      {tabs.map((tab, index) => (
+        <LineTab key={index}>{tab}</LineTab>
+      ))}
+    </Tabs>
   );
 };
 
