@@ -3,6 +3,15 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import theme from "@/theme";
 import Head from "next/head";
+import React from "react";
+
+function SafeHydrate({ children }: { children: React.ReactNode }) {
+  return (
+    <div suppressHydrationWarning>
+      {typeof window === "undefined" ? null : children}
+    </div>
+  );
+}
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +21,9 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <SafeHydrate>
+        <Component {...pageProps} />
+      </SafeHydrate>
     </ChakraProvider>
   );
 }
